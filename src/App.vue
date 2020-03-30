@@ -1,28 +1,63 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Navbar />
+    <transition name="fade" mode="out-in">
+      <router-view id="view" />
+    </transition>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Navbar from "@/components/Navbar.vue";
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    Navbar
+  },
+  data() {
+    return {};
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+@font-face {
+  font-family: "noto_sans";
+  src: url("assets/fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "gilroy";
+  src: url("assets/fonts/Gilroy-ExtraBold.otf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+* {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  letter-spacing: 0.1em;
+  color: #323d47;
+  font-family: "gilroy", sans-serif;
+}
+
+#view {
+  padding: 2em 0.5em 1em 2em;
+  margin-left: 6.75em;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.25s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }
 </style>
